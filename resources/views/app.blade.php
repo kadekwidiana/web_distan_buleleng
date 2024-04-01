@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="https://distan.bulelengkab.go.id/public/assets/image/logo_buleleng_100.png" type="image/gif"
       sizes="16x16">
-    <title>SIG Distan Kab. Buleleng</title>
+    {{-- <title inertia>{{ config("app.name", "SIG Distan Kab. Buleleng") }}</title> --}}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
