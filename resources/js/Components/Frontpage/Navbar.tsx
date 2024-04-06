@@ -3,28 +3,26 @@ import React from 'react'
 
 export default function NavbarFrontpage() {
     return (
-        <nav className="navbar-top border-gray-200 dark:bg-gray-900">
+        <nav className="navbar-top border-gray-200  sm:px-6 lg:px-2">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
                 <Link href="/" className="flex items-center space-x-1 sm:space-x-3 rtl:space-x-reverse">
                     <img src="https://distan.bulelengkab.go.id/public/assets/image/logo_buleleng_100.png" className="h-12"
                         alt="Logo" />
                     <div className="flex flex-col gap-0">
-                        <span className="self-start text-xs sm:text-lg sm:font-medium dark:text-white">Sistem Informasi
+                        <span className="self-start text-xs sm:text-lg sm:font-medium">Sistem Informasi
                             Geografis</span>
-                        <span className="self-start sm:text-2xl font-semibold dark:text-white">Dinas
+                        <span className="self-start sm:text-2xl font-semibold">Dinas
                             Pertanian Kab. Buleleng</span>
                     </div>
                 </Link>
                 <button data-collapse-toggle="navbar-default" type="button"
-                    className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    className="inline-flex items-center p-1 w-8 h-8 justify-center rounded-lg lg:hidden focus:outline-none focus:ring-1 focus:ring-gray-300"
                     aria-controls="navbar-default" aria-expanded="false">
-                    <span className="sr-only">Open main menu</span>
-                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill="#ffffff" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
                     </svg>
                 </button>
-                <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+                <div className="hidden w-full lg:block md:w-auto" id="navbar-default">
                     <ul
                         className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
                         <li>

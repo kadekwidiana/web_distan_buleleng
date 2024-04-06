@@ -1,12 +1,23 @@
 import MultiSelect from '@/Components/Backpage/Forms/MultiSelect';
+import MapsPPL from '@/Components/Backpage/Maps/MapsPPL';
 import BackpageLayout from '@/Layouts/BackpageLayout'
-import { useScriptButtonClick, useScriptInputPPL } from '@/Utils/LoadScriptBackpage';
 import { Head, Link } from '@inertiajs/react';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 export default function InputPPLPage() {
-    useScriptInputPPL();
+
     // useScriptButtonClick();
+    const [stepForm, setStepForm] = useState(1);
+    const [statusStepNext, setStatusStepNext] = useState(false);
+
+    const handlePreviousStep = () => {
+        setStepForm(1)
+    }
+
+    const handleNextStep = () => {
+        setStepForm(2)
+        setStatusStepNext(true)
+    }
 
     const [selectedOption, setSelectedOption] = useState<string>('');
     const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
@@ -19,22 +30,32 @@ export default function InputPPLPage() {
     return (
         <BackpageLayout>
             <Head title="PPL" />
-            <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
-
+            <div className="mb-4 shadow-md">
+                <ol className="flex items-center w-full p-3 space-x-1 text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 sm:text-base sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+                    <li onClick={handlePreviousStep} className="flex items-center text-blue-600 cursor-pointer">
+                        <span className="flex items-center justify-center w-5 h-5 me-2 text-xs border border-blue-600 rounded-full shrink-0">
+                            1
+                        </span>
+                        Kewilayahan & Potensi Pertanian
+                        <svg className="w-3 h-3 ms-2 sm:ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+                        </svg>
+                    </li>
+                    <li onClick={handleNextStep} className={`flex items-center ${stepForm === 2 && 'text-blue-600'} cursor-pointer`}>
+                        <span className={`flex items-center justify-center w-5 h-5 me-2 text-xs border ${stepForm === 2 ? 'border-blue-600' : 'border-gray-500'}  rounded-full shrink-0`}>
+                            2
+                        </span>
+                        Data Lahan & Maps
+                    </li>
+                </ol>
+            </div>
+            <div className={`${stepForm === 1 ? '' : 'hidden'} grid grid-cols-1 gap-4 sm:grid-cols-2`}>
                 <div className="flex flex-col gap-9">
-                    <div className="rounded-sm border border-stroke bg-white shadow-default p-2 px-6">
-                        <h1 className='font-semibold text-2xl'>Input Data</h1>
-                    </div>
-                    {/* other div */}
-                </div>
-                <div className="flex flex-col gap-9">
-                </div>
-                <div className="flex flex-col gap-9">
-                    <div className="rounded-sm border border-stroke bg-white shadow-default">
+                    <div className="rounded-sm border border-stroke shadow-md bg-white shadow-default">
                         <div className="flex flex-col gap-5 p-6">
                             <div>
                                 <div>
-                                    <label className="mb-3 block text-black dark:text-white">
+                                    <label className="mb-3 block text-black">
                                         Nama Pegawai
                                     </label>
                                     <input
@@ -51,11 +72,11 @@ export default function InputPPLPage() {
                     {/* other div */}
                 </div>
                 <div className="flex flex-col gap-9">
-                    <div className="rounded-sm border border-stroke bg-white shadow-default">
+                    <div className="rounded-sm border border-stroke shadow-md bg-white shadow-default">
                         <div className="flex flex-col gap-5 p-6">
                             <div>
                                 <div>
-                                    <label className="mb-3 block text-black dark:text-white">
+                                    <label className="mb-3 block text-black">
                                         Tanggal Input
                                     </label>
                                     <input
@@ -74,19 +95,19 @@ export default function InputPPLPage() {
 
                 <div className="flex flex-col gap-9">
                     {/* <!-- Input Fields --> */}
-                    <div className="rounded-sm border border-stroke bg-white shadow-default">
-                        <div className="border-b border-gray-300 border-stroke py-4 px-6 dark:border-strokedark">
-                            <h3 className="font-medium text-black dark:text-white">
+                    <div className="rounded-sm border border-stroke shadow-md bg-white shadow-default">
+                        <div className="border-b border-gray-300 border-stroke py-4 px-6">
+                            <h3 className="font-medium text-black">
                                 Kewilayahan
                             </h3>
                         </div>
                         <div className="flex flex-col gap-5 p-6">
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Kecamatan
                                 </label>
 
-                                <div className="relative z-20 bg-white dark:bg-form-input">
+                                <div className="relative z-20 bg-white">
                                     <span className="absolute top-1/2 left-4 z-30 -translate-y-1/2 text-gray-600">
                                         <i className="fa-solid fa-globe"></i>
                                     </span>
@@ -97,7 +118,7 @@ export default function InputPPLPage() {
                                         //     setSelectedOption(e.target.value);
                                         //     changeTextColor();
                                         // }}
-                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black dark:text-white' : ''
+                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black' : ''
                                             }`}
                                     >
                                         <option value="" className="text-body">
@@ -119,11 +140,11 @@ export default function InputPPLPage() {
                                 </div>
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Kelurahan/Desa
                                 </label>
 
-                                <div className="relative z-20 bg-white dark:bg-form-input">
+                                <div className="relative z-20 bg-white">
                                     <span className="absolute top-1/2 left-4 z-30 -translate-y-1/2 text-gray-600">
                                         <i className="fa-solid fa-globe"></i>
                                     </span>
@@ -134,7 +155,7 @@ export default function InputPPLPage() {
                                         //     setSelectedOption(e.target.value);
                                         //     changeTextColor();
                                         // }}
-                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black dark:text-white' : ''
+                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black' : ''
                                             }`}
                                     >
                                         <option value="" className="text-body">
@@ -150,11 +171,11 @@ export default function InputPPLPage() {
                                 </div>
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Gabungan Kelompok Tani
                                 </label>
 
-                                <div className="relative z-20 bg-white dark:bg-form-input">
+                                <div className="relative z-20 bg-white">
                                     <span className="absolute top-1/2 left-4 z-30 -translate-y-1/2 text-gray-600">
                                         <i className="fa-solid fa-users-viewfinder"></i>
                                     </span>
@@ -165,7 +186,7 @@ export default function InputPPLPage() {
                                         //     setSelectedOption(e.target.value);
                                         //     changeTextColor();
                                         // }}
-                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black dark:text-white' : ''
+                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black' : ''
                                             }`}
                                     >
                                         <option value="" className="text-body">
@@ -181,11 +202,11 @@ export default function InputPPLPage() {
                                 </div>
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Kelompok Tani
                                 </label>
 
-                                <div className="relative z-20 bg-white dark:bg-form-input">
+                                <div className="relative z-20 bg-white">
                                     <span className="absolute top-1/2 left-4 z-30 -translate-y-1/2 text-gray-600">
                                         <i className="fa-solid fa-users-rays"></i>
                                     </span>
@@ -196,7 +217,7 @@ export default function InputPPLPage() {
                                         //     setSelectedOption(e.target.value);
                                         //     changeTextColor();
                                         // }}
-                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black dark:text-white' : ''
+                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black' : ''
                                             }`}
                                     >
                                         <option value="" className="text-body">
@@ -212,11 +233,11 @@ export default function InputPPLPage() {
                                 </div>
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Subak
                                 </label>
 
-                                <div className="relative z-20 bg-white dark:bg-form-input">
+                                <div className="relative z-20 bg-white">
                                     <span className="absolute top-1/2 left-4 z-30 -translate-y-1/2 text-gray-600">
                                         <i className="fa-solid fa-people-roof"></i>
                                     </span>
@@ -227,7 +248,7 @@ export default function InputPPLPage() {
                                         //     setSelectedOption(e.target.value);
                                         //     changeTextColor();
                                         // }}
-                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black dark:text-white' : ''
+                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black' : ''
                                             }`}
                                     >
                                         <option value="" className="text-body">
@@ -249,20 +270,20 @@ export default function InputPPLPage() {
                 </div>
                 <div className="flex flex-col gap-9">
                     {/* <!-- Input Fields --> */}
-                    <div className="rounded-sm border border-stroke bg-white shadow-default">
-                        <div className="border-b border-gray-300 border-stroke py-4 px-6 dark:border-strokedark">
-                            <h3 className="font-medium text-black dark:text-white">
+                    <div className="rounded-sm border border-stroke shadow-md bg-white shadow-default">
+                        <div className="border-b border-gray-300 border-stroke py-4 px-6">
+                            <h3 className="font-medium text-black">
                                 Potensi Pertanian
                             </h3>
                         </div>
                         <div className="flex flex-col gap-5 p-6">
                             <MultiSelect id="multiSelect" title='Komoditi' optionDatas={['Kacang', 'Padi', 'Sayur']} />
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Jenis Lahan
                                 </label>
 
-                                <div className="relative z-20 bg-white dark:bg-form-input">
+                                <div className="relative z-20 bg-white">
                                     <span className="absolute top-1/2 left-4 z-30 -translate-y-1/2 text-gray-600">
                                         <i className="fa-solid fa-wheat-awn"></i>
                                     </span>
@@ -273,7 +294,7 @@ export default function InputPPLPage() {
                                         //     setSelectedOption(e.target.value);
                                         //     changeTextColor();
                                         // }}
-                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black dark:text-white' : ''
+                                        className={`relative z-20 w-full appearance-none rounded-md bg-transparent py-3 px-12 bg-white border border-gray-400 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 ${isOptionSelected ? 'text-black' : ''
                                             }`}
                                     >
                                         <option value="" className="text-body">
@@ -289,7 +310,7 @@ export default function InputPPLPage() {
                                 </div>
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Jumlah Perkiraan Panen (.kg)
                                 </label>
                                 <input
@@ -299,7 +320,7 @@ export default function InputPPLPage() {
                                 />
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Waktu Rata" Panen (bulan/hari)
                                 </label>
                                 <input
@@ -312,18 +333,19 @@ export default function InputPPLPage() {
                     </div>
                     {/* other div */}
                 </div>
+            </div>
 
+            <div className={`${stepForm === 2 ? '' : 'hidden'} grid grid-cols-1 gap-4 lg:grid-cols-3 w-full`}>
                 <div className="flex flex-col gap-9">
-                    {/* <!-- File upload --> */}
-                    <div className="rounded-sm border border-stroke bg-white shadow-default">
-                        <div className="border-b border-stroke py-4 px-6 dark:border-strokedark">
-                            <h3 className="font-medium text-black dark:text-white">
+                    <div className="rounded-sm border border-stroke shadow-md bg-white shadow-default">
+                        <div className="border-b border-stroke py-4 px-6">
+                            <h3 className="font-medium text-black">
                                 Data Lahan
                             </h3>
                         </div>
                         <div className="flex flex-col gap-5 p-6">
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Kepemilikan
                                 </label>
                                 <input
@@ -333,7 +355,7 @@ export default function InputPPLPage() {
                                 />
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Alamat/Lokasi
                                 </label>
                                 <input
@@ -343,20 +365,9 @@ export default function InputPPLPage() {
                                     className="w-full rounded-md bg-white border border-gray-400 py-3 px-5 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500"
                                 />
                             </div>
-                            {/* <div>
-                                <label className="mb-3 block text-black dark:text-white">
-                                    Altitude/Kemiringan
-                                </label>
-                                <input
-                                    id='altitude'
-                                    type="text"
-                                    placeholder="Masukan Alamat/Lokasi"
-                                    className="w-full rounded-md bg-white border border-gray-400 py-3 px-5 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                />
-                            </div> */}
                             <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
                                 <div className="w-full xl:w-1/2">
-                                    <label className="mb-2.5 block text-black dark:text-white">
+                                    <label className="mb-2.5 block text-black">
                                         Koordinat Latitude
                                     </label>
                                     <input
@@ -369,7 +380,7 @@ export default function InputPPLPage() {
                                 </div>
 
                                 <div className="w-full xl:w-1/2">
-                                    <label className="mb-2.5 block text-black dark:text-white">
+                                    <label className="mb-2.5 block text-black">
                                         Koordinat Longitude
                                     </label>
                                     <input
@@ -382,7 +393,7 @@ export default function InputPPLPage() {
                                 </div>
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Area
                                 </label>
                                 <textarea
@@ -394,7 +405,7 @@ export default function InputPPLPage() {
                                 ></textarea>
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Luas Lahan (meter persegi)
                                 </label>
                                 <input
@@ -405,17 +416,17 @@ export default function InputPPLPage() {
                                 />
                             </div>
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Gambar
                                 </label>
                                 <input
                                     type="file"
-                                    className="w-full cursor-pointer rounded-md bg-white border border-gray-400 py-2 px-5 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full cursor-pointer rounded-md bg-white border border-gray-400 py-2 px-2 text-black transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter focus:outline-none focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500"
                                 />
                             </div>
 
                             <div>
-                                <label className="mb-3 block text-black dark:text-white">
+                                <label className="mb-3 block text-black">
                                     Catatan
                                 </label>
                                 <textarea
@@ -426,53 +437,25 @@ export default function InputPPLPage() {
                             </div>
                         </div>
                     </div>
-                    {/* other div */}
                 </div>
+                {stepForm === 2
+                    ?
+                    <MapsPPL></MapsPPL>
+                    :
+                    statusStepNext === true &&
+                    <MapsPPL></MapsPPL>
+                }
+            </div>
 
-                <div className="flex flex-col gap-9">
-                    {/* <!-- File upload --> */}
-                    <div className="rounded-sm border border-stroke bg-white shadow-default">
-                        <div className="border-b border-stroke py-4 px-6 dark:border-strokedark">
-                            <h3 className="font-medium text-black dark:text-white">
-                                Penentuan data lahan dalam maps (draw on maps)
-                            </h3>
-                        </div>
-                        <div className="w-full h-96">
-                            {/* <button className='buttonClick' id='buttonClick'>Click</button> */}
-                            <div id='pplMaps' className="w-full h-full z-30"></div>
-                        </div>
-                    </div>
-                    {/* other div */}
-                </div>
-
-                <div className="">
-                    <Link
-                        href="/ppl"
-                        className="inline-flex items-center justify-center rounded-md bg-red-500 py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-                    >
-                        Cancel
-                    </Link>
-                    <Link
-                        href="#"
-                        className="ml-2 inline-flex items-center justify-center rounded-md bg-blue-500 py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-                    >
-                        Simpan Data
-                    </Link>
-                </div>
-                {/* <div className="flex justify-end">
-                    <Link
-                        href="#"
-                        className="inline-flex items-center justify-center rounded-md bg-blue-500 py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-                    >
-                        Button
-                    </Link>
-                    <Link
-                        href="#"
-                        className="ml-2 inline-flex items-center justify-center rounded-md bg-blue-500 py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-                    >
-                        Button
-                    </Link>
-                </div> */}
+            <div className="my-2 flex justify-between ">
+                <button onClick={handlePreviousStep}
+                    className="inline-flex items-center justify-center rounded-md bg-red-500 px-5 py-3 text-center font-medium text-white hover:bg-opacity-90">
+                    Kembali
+                </button>
+                <button onClick={handleNextStep}
+                    className="inline-flex items-center justify-center rounded-md bg-blue-500  px-5 py-3 text-center font-medium text-white hover:bg-opacity-9">
+                    {stepForm === 2 ? 'Simpan' : 'Lanjut'}
+                </button>
             </div>
         </BackpageLayout>
     )

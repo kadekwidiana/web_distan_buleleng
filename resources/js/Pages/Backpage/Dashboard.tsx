@@ -7,7 +7,7 @@ export default function Dashboard() {
         <BackpageLayout>
             <Head title="Dashboard" />
             {/* <!-- Alerts Item --> */}
-            <div className="flex w-full border-l-6 border-[#34D399] bg-[#34D399] bg-opacity-[15%] px-7 py-8 shadow-md dark:bg-[#1B1B24] dark:bg-opacity-30 md:p-9">
+            <div className="flex w-full border-l-6 border-[#34D399] bg-[#34D399] bg-opacity-[15%] px-7 py-8 shadow-md md:p-9">
                 <div className="mr-5 flex h-9 w-full max-w-[36px] items-center justify-center rounded-lg bg-[#34D399]">
                     <svg
                         width="16"
@@ -24,7 +24,7 @@ export default function Dashboard() {
                     </svg>
                 </div>
                 <div className="w-full">
-                    <h5 className="mb-3 text-lg text-black dark:text-[#34D399] ">
+                    <h5 className="mb-3 text-lg text-black">
                         Selamat Datang <span className='font-semibold'>Kadek</span>, anda login sebagai <span className='font-semibold'>Pegawai</span>
                     </h5>
                     <p className="text-base leading-relaxed text-body">

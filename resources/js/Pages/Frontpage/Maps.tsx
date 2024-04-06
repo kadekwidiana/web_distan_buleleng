@@ -1,13 +1,11 @@
-import React from 'react'
-import useScriptMapsFrontpage from '@/Utils/Frontpage/LoadScriptMaps';
-import useScriptSidebarMaps from '@/Utils/Frontpage/LoadScriptSidebarMaps';
-import { Head, Link } from '@inertiajs/react';
+import React, { useEffect } from 'react'
+import useScriptMapsFrontpage from '@/Utils/MapsFrontpage/MainMaps';
+import { Head } from '@inertiajs/react';
 import NavbarFrontpage from '@/Components/Frontpage/Navbar';
 import { SidebarAnalisis, SidebarBasemap, SidebarLayer, SidebarLegend } from '@/Components/Frontpage/Sidebar';
 
 export default function MapsPage() {
     useScriptMapsFrontpage();
-    // useScriptSidebarMaps();
 
     return (
         <>

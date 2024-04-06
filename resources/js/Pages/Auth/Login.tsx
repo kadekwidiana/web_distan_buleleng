@@ -58,7 +58,7 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                         <div className="hidden w-full xl:block xl:w-1/2">
                             <div className="py-16 px-26 text-center">
                                 <Link className="mb-5.5 inline-block" href="/">
-                                    {/* <img className="hidden dark:block" src={Logo} alt="Logo" /> */}
+                                    {/* <img className="hidden" src={Logo} alt="Logo" /> */}
                                     <img src="https://distan.bulelengkab.go.id/public/assets/image/logo_buleleng_100.png" width={100} height={100} alt="Picture of the author" className='w-28' />
                                 </Link>
                                 <p className="px-20 pb-1">
@@ -190,20 +190,20 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                             </div>
                         </div>
 
-                        <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
+                        <div className="w-full border-stroke xl:w-1/2 xl:border-l-2">
                             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
                                 <Link className="mb-5.5 inline-block xl:hidden" href="/">
-                                    {/* <img className="hidden dark:block" src={Logo} alt="Logo" /> */}
+                                    {/* <img className="hidden" src={Logo} alt="Logo" /> */}
                                     <img src="https://distan.bulelengkab.go.id/public/assets/image/logo_buleleng_100.png" width={100} height={100} alt="Picture of the author" className='w-32' />
                                 </Link>
                                 <span className="mb-1.5 hidden xl:block font-medium">Login User</span>
                                 <span className="mb-1.5 block xl:hidden font-medium">Login User, Sistem Informasi Geografis Dinas Pertanian Kabupaten Buleleng</span>
-                                <h2 className="mb-9 text-xl font-bold text-black dark:text-white sm:text-title-xl2">
+                                <h2 className="mb-9 text-xl font-bold text-black sm:text-title-xl2">
                                     Masukkan akun anda untuk login
                                 </h2>
                                 <form onSubmit={submit}>
                                     <div className="mb-4">
-                                        <label htmlFor="email" className="mb-2.5 block font-medium text-black dark:text-white">
+                                        <label htmlFor="email" className="mb-2.5 block font-medium text-black">
                                             Email
                                         </label>
                                         <div className="relative">
@@ -227,7 +227,7 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                                     </div>
 
                                     <div className="mb-6">
-                                        <label htmlFor="password" className="mb-2.5 block font-medium text-black dark:text-white">
+                                        <label htmlFor="password" className="mb-2.5 block font-medium text-black">
                                             Password
                                         </label>
                                         <div className="relative">

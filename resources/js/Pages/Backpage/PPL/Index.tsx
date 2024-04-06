@@ -8,9 +8,9 @@ export default function IndexPPLPage() {
         <BackpageLayout>
             <Head title="PPL" />
             {/* <Link href='/ppl/input'>Input</Link> */}
-            <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+            <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
                 <div className="flex justify-between">
-                    <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
+                    <h4 className="mb-6 text-xl font-semibold text-black">
                         List Data
                     </h4>
                     <Link
@@ -22,7 +22,7 @@ export default function IndexPPLPage() {
                 </div>
 
                 <div className="flex flex-col">
-                    <div className="grid grid-cols-3 rounded-sm bg-gray-200 dark:bg-meta-4 sm:grid-cols-5">
+                    <div className="grid grid-cols-3 rounded-sm bg-gray-200 sm:grid-cols-5">
                         <div className="p-2.5 xl:p-5">
                             <h5 className="text-sm font-medium uppercase xsm:text-base">
                                 Kelompok Tani
@@ -49,18 +49,18 @@ export default function IndexPPLPage() {
                             </h5>
                         </div>
                     </div>
-                    <div className={`grid grid-cols-3 sm:grid-cols-5 border-b border-stroke dark:border-strokedark`}>
+                    <div className={`grid grid-cols-3 sm:grid-cols-5 border-b border-stroke`}>
                         <div className="flex items-center gap-3 p-2.5 xl:p-5">
                             {/* <div className="flex-shrink-0">
                                 <img src='' alt="Brand" />
                             </div> */}
-                            <p className="hidden text-black dark:text-white sm:block">
+                            <p className="text-black">
                                 Kelompok Tani 1
                             </p>
                         </div>
 
                         <div className="flex items-center justify-center p-2.5 xl:p-5">
-                            <p className="text-black dark:text-white">Subak Abian</p>
+                            <p className="text-black">Subak Abian</p>
                         </div>
 
                         <div className="flex items-center justify-center p-2.5 xl:p-5">
@@ -68,7 +68,7 @@ export default function IndexPPLPage() {
                         </div>
 
                         <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                            <p className="text-black dark:text-white">200 m2</p>
+                            <p className="text-black">200 m2</p>
                         </div>
 
                         <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
@@ -92,18 +92,18 @@ export default function IndexPPLPage() {
                             </Link>
                         </div>
                     </div>
-                    <div className={`grid grid-cols-3 sm:grid-cols-5 border-b border-stroke dark:border-strokedark`}>
+                    <div className={`grid grid-cols-3 sm:grid-cols-5 border-b border-stroke`}>
                         <div className="flex items-center gap-3 p-2.5 xl:p-5">
                             {/* <div className="flex-shrink-0">
                                 <img src='' alt="Brand" />
                             </div> */}
-                            <p className="hidden text-black dark:text-white sm:block">
+                            <p className="text-black">
                                 Kelompok Tani 1
                             </p>
                         </div>
 
                         <div className="flex items-center justify-center p-2.5 xl:p-5">
-                            <p className="text-black dark:text-white">Subak Abian</p>
+                            <p className="text-black">Subak Abian</p>
                         </div>
 
                         <div className="flex items-center justify-center p-2.5 xl:p-5">
@@ -111,7 +111,7 @@ export default function IndexPPLPage() {
                         </div>
 
                         <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                            <p className="text-black dark:text-white">200 m2</p>
+                            <p className="text-black">200 m2</p>
                         </div>
 
                         <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">

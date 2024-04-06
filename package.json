@@ -23,6 +23,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "flowbite-react": "^0.8.0",
         "sweetalert2": "^11.10.7"
     }
 }

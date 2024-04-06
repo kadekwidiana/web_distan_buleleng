@@ -1,12 +1,18 @@
 import { useEffect } from "react"
+import Swal from 'sweetalert2'
 
-const useScriptInputPPL = () => {
+const UseScriptMapsInputPPL = () => {
     useEffect(() => {
-
         // Maps Leaflet
         // List Basemap
         const openStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '©OpenStreetMap Contributors',
+        });
+
+        const googleStreetMap = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
+            attribution: '©Google Street',
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+            maxZoom: 20
         });
 
         const satelliteMap = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
@@ -39,15 +45,76 @@ const useScriptInputPPL = () => {
         const coorBali = [-8.198517680287658, 115.10051848149178];
 
         const map = L.map('pplMaps', {
-            layers: [openStreetMap],
+            layers: [googleStreetMap],
             center: coorBali,
             zoom: 10,
             // minZoom: ,
             zoomControl: false
         });
 
+        // Fungsi untuk menambahkan marker ke peta
+        function addMarkerToMap(lat, lng) {
+            // Membuat marker dengan koordinat yang diberikan
+            const marker = L.marker([lat, lng]).addTo(map)
+                .bindPopup('Lokasi anda saat ini')
+                .openPopup();
+        }
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            showCloseButton: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+
+        function setMapToUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        Toast.fire({
+                            icon: "info",
+                            title: "Geolokasi telah diaktifkan! 🌍",
+                        });
+
+                        const userLat = position.coords.latitude;
+                        const userLng = position.coords.longitude;
+                        map.setView([userLat, userLng], 12);
+                        getAddress(userLat, userLng);
+                        $('#latitude').val(userLat);
+                        $('#longitude').val(userLng);
+
+                        // Menambahkan marker ke peta
+                        addMarkerToMap(userLat, userLng);
+                    }, function (error) {
+                        console.error("Error getting user location:", error);
+                        Toast.fire({
+                            icon: "error",
+                            title: "Permintaan geolokasi ditolak pengguna!"
+                        });
+                    },
+                    {
+                        timeout: 10000, // timeout set to 10 seconds
+                        enableHighAccuracy: true, // requesting high accuracy location
+                        maximumAge: 0 // request permission every time
+                    }
+                );
+            } else {
+                console.error("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Panggil fungsi setMapToUserLocation untuk mendapatkan lokasi pengguna dan mengatur pusat peta
+        setMapToUserLocation();
+
         const baseMaps = {
             "OpenStreetMap": openStreetMap,
+            "Google Street": googleStreetMap,
             "Google Satelite": satelliteMap,
             "Google Hibrid": googleHibridMap,
             "Google Terrain": googleTerrain,
@@ -268,17 +335,4 @@ const useScriptInputPPL = () => {
     }, [])
 }
 
-const useScriptButtonClick = () => {
-    useEffect(() => {
-        // Mengambil elemen tombol dengan ID 'buttonClick'
-        const button = document.getElementById('buttonClick');
-
-        // Menambahkan event listener untuk menangani klik pada tombol
-        button.addEventListener('click', () => {
-            // Menampilkan pesan di konsol ketika tombol diklik
-            console.log('Tombol diklik!');
-        });
-    }, [])
-}
-
-export { useScriptInputPPL, useScriptButtonClick };
+export default UseScriptMapsInputPPL;
