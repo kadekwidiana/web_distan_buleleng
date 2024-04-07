@@ -66,7 +66,7 @@ const useScriptDataMaps = (map) => {
             }
 
             const data = await response.json();
-            console.log(data.features[0].properties.name);
+            // console.log(data.features[0].properties.name);
 
             L.geoJSON(data.features, {
                 onEachFeature: function (feature, layer) {

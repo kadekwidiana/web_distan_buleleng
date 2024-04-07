@@ -1,5 +1,5 @@
-import MultiSelect from '@/Components/Backpage/Forms/MultiSelect';
-import MapsPPL from '@/Components/Backpage/Maps/MapsPPL';
+import MultiSelect from '@/Components/Forms/MultiSelect';
+import MapsPPL from '@/Components/Maps/MapsPPL';
 import BackpageLayout from '@/Layouts/BackpageLayout'
 import { Head, Link } from '@inertiajs/react';
 import React, { useState } from 'react'
@@ -453,7 +453,7 @@ export default function InputPPLPage() {
                     Kembali
                 </button>
                 <button onClick={handleNextStep}
-                    className="inline-flex items-center justify-center rounded-md bg-blue-500  px-5 py-3 text-center font-medium text-white hover:bg-opacity-9">
+                    className="inline-flex items-center justify-center rounded-md bg-blue-500  px-5 py-3 text-center font-medium text-white hover:bg-opacity-90">
                     {stepForm === 2 ? 'Simpan' : 'Lanjut'}
                 </button>
             </div>

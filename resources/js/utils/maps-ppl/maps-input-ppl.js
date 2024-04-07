@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import Swal from 'sweetalert2'
 
-const UseScriptMapsInputPPL = () => {
+const useScriptMapsInputPPL = () => {
     useEffect(() => {
         // Maps Leaflet
         // List Basemap
@@ -52,11 +52,19 @@ const UseScriptMapsInputPPL = () => {
             zoomControl: false
         });
 
+        // custom marker Baresoil
+        let locationIcon = L.icon({
+            iconUrl: '/src/assets/icons/icon-marker/location-pin.png',
+            iconSize: [40, 47], // ukuran ikon
+            iconAnchor: [16, 32], // anchor point pada ikon
+            popupAnchor: [3, -20]
+        });
+
         // Fungsi untuk menambahkan marker ke peta
         function addMarkerToMap(lat, lng) {
             // Membuat marker dengan koordinat yang diberikan
-            const marker = L.marker([lat, lng]).addTo(map)
-                .bindPopup('Lokasi anda saat ini')
+            const marker = L.marker([lat, lng], { icon: locationIcon }).addTo(map)
+                .bindPopup('Lokasi anda saat ini.')
                 .openPopup();
         }
 
@@ -84,7 +92,7 @@ const UseScriptMapsInputPPL = () => {
 
                         const userLat = position.coords.latitude;
                         const userLng = position.coords.longitude;
-                        map.setView([userLat, userLng], 12);
+                        map.setView([userLat, userLng], 13);
                         getAddress(userLat, userLng);
                         $('#latitude').val(userLat);
                         $('#longitude').val(userLng);
@@ -335,4 +343,4 @@ const UseScriptMapsInputPPL = () => {
     }, [])
 }
 
-export default UseScriptMapsInputPPL;
+export default useScriptMapsInputPPL;

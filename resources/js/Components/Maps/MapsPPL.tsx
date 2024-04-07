@@ -1,4 +1,4 @@
-import useScriptMapsInputPPL from '@/Utils/MapsPPL/MapsInputPPL';
+import useScriptMapsInputPPL from '@/utils/maps-ppl/maps-input-ppl';
 import React from 'react'
 
 export default function MapsPPL() {

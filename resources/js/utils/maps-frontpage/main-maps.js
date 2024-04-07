@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import useScriptSidebarMaps from "./Sidebar";
-import useScriptDataMaps from "./DataMaps";
+import useScriptSidebarMaps from "./sidebar";
+import useScriptDataMaps from "./data-maps";
 
 const useScriptMapsFrontpage = () => {
     useEffect(() => {

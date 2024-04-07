@@ -9,7 +9,7 @@ interface Props {
     handleShowSidebarMobile: () => void
 }
 
-export default function Navbar({ showSidebar, showSidebarMobile, handleShowSidebar, handleShowSidebarMobile }: Props) {
+export default function NavbarBackpage({ showSidebar, showSidebarMobile, handleShowSidebar, handleShowSidebarMobile }: Props) {
     return (
         <nav className="fixed top-0 z-40 w-full bg-white border-b shadow-sm border-gray-200">
             <div className="px-3 py-4 lg:px-5 lg:pl-3">

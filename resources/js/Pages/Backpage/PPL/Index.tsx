@@ -1,4 +1,4 @@
-import MultiSelect from '@/Components/Backpage/Forms/MultiSelect';
+import MultiSelect from '@/Components/Forms/MultiSelect';
 import BackpageLayout from '@/Layouts/BackpageLayout'
 import { Head, Link } from '@inertiajs/react';
 import React, { useEffect, useState } from 'react'

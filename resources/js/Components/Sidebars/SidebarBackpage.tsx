@@ -8,7 +8,7 @@ interface Props {
     handleShowSidebarMobile: () => void
 }
 
-export default function Sidebar({ showSidebar, showSidebarMobile, handleShowSidebar, handleShowSidebarMobile }: Props) {
+export default function SidebarBackpage({ showSidebar, showSidebarMobile, handleShowSidebar, handleShowSidebarMobile }: Props) {
     const [showDropdown, setShowDropdown] = useState(false);
     // console.log(showDropdown);
 
